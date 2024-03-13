@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/initiate.dart';
 import 'package:flutter/material.dart';
 
 import '/screens/home.dart';
@@ -26,12 +27,13 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => const Home(),
         '/signup': (context) => const SignUp(),
         '/login': (context) => const LogIn(),
+        '/gs': (context) => const Initiation(),
       },
       home: const Home(),
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: const ColorScheme.dark(
-          background: Color.fromARGB(244, 60, 60, 59),
+          surface: Color.fromARGB(244, 60, 60, 59),
         ),
       ),
     );

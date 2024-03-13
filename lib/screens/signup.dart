@@ -142,7 +142,9 @@ class _SignUpState extends State<SignUp> {
                         MediaQuery.of(context).size.height * 0.1),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/gs');
+                },
                 child: Center(
                   child: Text(
                     'Sign Up',

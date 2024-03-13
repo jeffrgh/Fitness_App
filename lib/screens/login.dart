@@ -136,11 +136,15 @@ class _LogInState extends State<LogIn> {
                   backgroundColor: MaterialStateProperty.all(
                       const Color.fromARGB(255, 225, 206, 36)),
                   fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.of(context).size.width * 0.8,
-                        MediaQuery.of(context).size.height * 0.1),
+                    Size(
+                      MediaQuery.of(context).size.width * 0.8,
+                      MediaQuery.of(context).size.height * 0.1,
+                    ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/gs');
+                },
                 child: Center(
                   child: Text(
                     'Log In',
