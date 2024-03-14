@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-  static const routeName = '/home';
+class Create extends StatefulWidget {
+  const Create({Key? key}) : super(key: key);
+  static const routeName = '/create';
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Create> createState() => _CreateState();
 }
 
-class _HomeState extends State<Home> {
+class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

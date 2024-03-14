@@ -1,9 +1,11 @@
-import 'package:fitness_app/screens/gs_gender.dart';
-import 'package:fitness_app/screens/initiate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '/screens/home.dart';
+import '/screens/create.dart';
+import '/screens/gs_gender.dart';
+import '/screens/gs_place.dart';
+import '/screens/gs_weight.dart';
+import '/screens/initiate.dart';
 import '/screens/login.dart';
 import '/screens/signup.dart';
 
@@ -37,13 +39,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/home': (context) => const Home(),
+        '/create': (context) => const Create(),
         '/signup': (context) => const SignUp(),
         '/login': (context) => const LogIn(),
         '/gs': (context) => const Initiation(),
         '/gender': (context) => const GenderGS(),
+        '/weight': (context) => const WeightGS(),
+        '/place': (context) => const PlaceGS(),
       },
-      home: const Home(),
+      home: const Create(),
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: const Color.fromARGB(244, 60, 60, 59),

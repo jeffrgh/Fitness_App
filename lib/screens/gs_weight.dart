@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-enum Gender { male, female, other }
+class WeightGS extends StatefulWidget {
+  const WeightGS({super.key});
 
-class GenderGS extends StatefulWidget {
-  const GenderGS({super.key});
-  static const routeName = '/gender';
+  static const routeName = '/weight';
 
   @override
-  State<GenderGS> createState() => _GenderGSState();
+  State<WeightGS> createState() => _WeightGSState();
 }
 
-class _GenderGSState extends State<GenderGS> {
-  Gender _gender = Gender.male;
+class _WeightGSState extends State<WeightGS> {
+  bool _changeUnits = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +43,7 @@ class _GenderGSState extends State<GenderGS> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(100),
                 ),
-                value: 0.25,
+                value: 0.5,
               ),
             ),
             Padding(
@@ -53,90 +52,7 @@ class _GenderGSState extends State<GenderGS> {
                 top: MediaQuery.of(context).size.height * 0.05,
               ),
               child: Text(
-                'Gender',
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: MediaQuery.of(context).size.height * 0.05,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.25,
-                right: MediaQuery.of(context).size.width * 0.2,
-                top: MediaQuery.of(context).size.height * 0.015,
-              ),
-              child: RadioListTile<Gender>(
-                title: Text(
-                  "Male",
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                ),
-                activeColor: const Color.fromARGB(255, 225, 206, 36),
-                value: Gender.male,
-                groupValue: _gender,
-                onChanged: (_) {
-                  setState(() {
-                    _gender = Gender.male;
-                  });
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.25,
-                right: MediaQuery.of(context).size.width * 0.2,
-              ),
-              child: RadioListTile<Gender>(
-                title: Text(
-                  "Female",
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                ),
-                activeColor: const Color.fromARGB(255, 225, 206, 36),
-                value: Gender.female,
-                groupValue: _gender,
-                onChanged: (_) {
-                  setState(() {
-                    _gender = Gender.female;
-                  });
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.25,
-                right: MediaQuery.of(context).size.width * 0.2,
-              ),
-              child: RadioListTile<Gender>(
-                title: Text(
-                  "Other",
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                ),
-                activeColor: const Color.fromARGB(255, 225, 206, 36),
-                value: Gender.other,
-                groupValue: _gender,
-                onChanged: (_) {
-                  setState(() {
-                    _gender = Gender.other;
-                  });
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                // left: MediaQuery.of(context).size.width * 0.1,
-                top: MediaQuery.of(context).size.height * 0.05,
-              ),
-              child: Text(
-                'Age',
+                'Weight',
                 style: TextStyle(
                   fontFamily: 'Montserrat',
                   fontSize: MediaQuery.of(context).size.height * 0.05,
@@ -156,15 +72,84 @@ class _GenderGSState extends State<GenderGS> {
                   fontFamily: 'Montserrat',
                   fontSize: MediaQuery.of(context).size.height * 0.025,
                 ),
-                decoration: const InputDecoration(
-                  hintText: 'Enter your age',
-                  border: OutlineInputBorder(
+                decoration: InputDecoration(
+                  hintText: _changeUnits
+                      ? 'Enter your weight (pounds)'
+                      : 'Enter your weight (kg)',
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
                     ),
                   ),
                 ),
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                // left: MediaQuery.of(context).size.width * 0.1,
+                top: MediaQuery.of(context).size.height * 0.05,
+              ),
+              child: Text(
+                'Height',
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: MediaQuery.of(context).size.height * 0.05,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.1,
+                right: MediaQuery.of(context).size.width * 0.1,
+                top: MediaQuery.of(context).size.height * 0.05,
+                bottom: MediaQuery.of(context).size.height * 0.05,
+              ),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: MediaQuery.of(context).size.height * 0.025,
+                ),
+                decoration: InputDecoration(
+                  hintText: _changeUnits
+                      ? 'Enter your height (feet)'
+                      : 'Enter your height (cm)',
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.075,
+                    right: MediaQuery.of(context).size.width * 0.2,
+                  ),
+                  child: Text(
+                    'Change to pounds/feet',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: MediaQuery.of(context).size.height * 0.025,
+                    ),
+                  ),
+                ),
+                Switch(
+                  inactiveTrackColor: const Color.fromARGB(255, 60, 60, 59),
+                  // This bool value toggles the switch.
+                  value: _changeUnits,
+                  activeColor: Colors.yellow,
+                  onChanged: (bool value) {
+                    // This is called when the user toggles the switch.
+                    setState(() {
+                      _changeUnits = !_changeUnits;
+                    });
+                  },
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -179,7 +164,7 @@ class _GenderGSState extends State<GenderGS> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/weight');
+                  Navigator.of(context).pushNamed('/place');
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios,

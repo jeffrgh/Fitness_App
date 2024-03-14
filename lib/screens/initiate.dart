@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'gs_gender.dart';
-
 class Initiation extends StatefulWidget {
   const Initiation({super.key});
   static const routeName = '/gs';
