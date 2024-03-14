@@ -55,12 +55,7 @@ Started''',
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const GenderGS(),
-                      ),
-                    );
-                    // Navigator.of(context).pushNamed('');
+                    Navigator.of(context).pushNamed('/gender');
                   },
                   icon: const Icon(
                     Icons.arrow_forward_ios,
