@@ -1,14 +1,27 @@
+import 'package:fitness_app/screens/gs_gender.dart';
 import 'package:fitness_app/screens/initiate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '/screens/home.dart';
 import '/screens/login.dart';
 import '/screens/signup.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.immersive,
   );
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  ).then((_) {
+    runApp(
+      const MyApp(),
+    );
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -28,12 +41,14 @@ class _MyAppState extends State<MyApp> {
         '/signup': (context) => const SignUp(),
         '/login': (context) => const LogIn(),
         '/gs': (context) => const Initiation(),
+        '/gender': (context) => const GenderGS(),
       },
       home: const Home(),
       theme: ThemeData(
         useMaterial3: true,
+        scaffoldBackgroundColor: const Color.fromARGB(244, 60, 60, 59),
         colorScheme: const ColorScheme.dark(
-          background: Color.fromARGB(244, 60, 60, 59),
+          surface: Color.fromARGB(244, 60, 60, 59),
           brightness: Brightness.dark,
         ),
       ),

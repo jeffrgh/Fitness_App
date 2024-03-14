@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'gs_gender.dart';
+
 class Initiation extends StatefulWidget {
   const Initiation({super.key});
   static const routeName = '/gs';
@@ -53,6 +55,11 @@ Started''',
                     ),
                   ),
                   onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const GenderGS(),
+                      ),
+                    );
                     // Navigator.of(context).pushNamed('');
                   },
                   icon: const Icon(
